@@ -1,0 +1,166 @@
+id: jcode.lang.markup
+name: Markup Language Pack
+version: 1.0.0
+type: language
+
+# One extension, many languages. Each entry is a self-contained language pack
+# (coloring rules + completions + helpers + formatter) resolved by file extension.
+languages:
+  # ---------------------------------------------------------------- HTML
+  - id: html
+    extensions: [".html", ".htm", ".xhtml", ".vue", ".svelte"]
+    comment: { blockStart: "<!--", blockEnd: "-->" }
+    strings: ["\"", "'"]
+    keywords: [
+      html, head, body, title, meta, link, style, script, base, noscript,
+      div, span, p, a, img, ul, ol, li, dl, dt, dd, br, hr, pre, code, blockquote,
+      h1, h2, h3, h4, h5, h6, strong, em, b, i, u, small, mark, sub, sup,
+      header, footer, nav, main, section, article, aside, figure, figcaption,
+      table, thead, tbody, tfoot, tr, td, th, caption, colgroup, col,
+      form, input, button, label, select, option, optgroup, textarea, fieldset, legend,
+      video, audio, source, track, canvas, svg, iframe, embed, object, picture,
+      template, slot, details, summary, dialog, datalist, output, progress, meter
+    ]
+    types: [
+      class, id, href, src, alt, rel, type, name, value, placeholder, title,
+      content, charset, width, height, style, target, lang, role, disabled, checked,
+      selected, required, readonly, hidden, srcset, sizes, loading, defer, async
+    ]
+    formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
+    completions:
+      - { label: a, detail: anchor, insert: "<a href=\"$1\">$0</a>" }
+      - { label: img, detail: image, insert: "<img src=\"$1\" alt=\"$2\">$0" }
+      - { label: div, detail: block, insert: "<div class=\"$1\">\n  $0\n</div>" }
+      - { label: link, detail: stylesheet, insert: "<link rel=\"stylesheet\" href=\"$1\">$0" }
+      - { label: script, detail: script src, insert: "<script src=\"$1\"></script>$0" }
+      - { label: input, detail: input field, insert: "<input type=\"$1\" name=\"$2\">$0" }
+    helpers:
+      - title: HTML5 boilerplate
+        snippet: |
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>$1</title>
+          </head>
+          <body>
+            $0
+          </body>
+          </html>
+
+  # ---------------------------------------------------------------- XML
+  - id: xml
+    extensions: [".xml", ".xsd", ".xsl", ".xslt", ".plist", ".rss", ".wsdl", ".csproj", ".props", ".targets", ".nuspec", ".resx"]
+    comment: { blockStart: "<!--", blockEnd: "-->" }
+    strings: ["\"", "'"]
+    keywords: [xml, version, encoding, standalone, DOCTYPE, CDATA, ENTITY, xmlns]
+    types: [id, name, type, value, ref, key, version, lang, xmlns, schemaLocation]
+    formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
+    completions:
+      - { label: tag, detail: element, insert: "<$1>$0</$1>" }
+      - { label: attr, detail: attribute, insert: "$1=\"$2\"$0" }
+      - { label: cdata, detail: CDATA block, insert: "<![CDATA[$0]]>" }
+    helpers:
+      - title: XML declaration
+        snippet: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n$0"
+
+  # ---------------------------------------------------------------- SVG
+  - id: svg
+    extensions: [".svg"]
+    comment: { blockStart: "<!--", blockEnd: "-->" }
+    strings: ["\"", "'"]
+    keywords: [
+      svg, g, defs, symbol, use, path, rect, circle, ellipse, line, polyline, polygon,
+      text, tspan, image, clipPath, mask, pattern, marker, filter,
+      linearGradient, radialGradient, stop, animate, animateTransform
+    ]
+    types: [
+      d, fill, stroke, x, y, x1, y1, x2, y2, cx, cy, r, rx, ry, width, height,
+      viewBox, transform, opacity, points, offset, gradientUnits, xmlns,
+      "stroke-width", "stroke-linecap", "stroke-linejoin", "fill-opacity", "stroke-opacity"
+    ]
+    formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
+    completions:
+      - { label: svg, detail: root, insert: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 $1\">\n  $0\n</svg>" }
+      - { label: path, detail: path, insert: "<path d=\"$1\" fill=\"$2\"/>$0" }
+      - { label: rect, detail: rectangle, insert: "<rect x=\"$1\" y=\"$2\" width=\"$3\" height=\"$4\"/>$0" }
+      - { label: circle, detail: circle, insert: "<circle cx=\"$1\" cy=\"$2\" r=\"$3\"/>$0" }
+
+  # ---------------------------------------------------------------- YAML
+  - id: yaml
+    extensions: [".yaml", ".yml"]
+    comment: { line: "#" }
+    strings: ["\"", "'"]
+    keywords: ["true", "false", "null", "yes", "no", "on", "off", "~"]
+    types: []
+    formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
+    completions:
+      - { label: key, detail: mapping, insert: "$1: $0" }
+      - { label: item, detail: list item, insert: "- $0" }
+    helpers:
+      - title: Document separator
+        snippet: "---\n$0"
+
+  # ---------------------------------------------------------------- JSON
+  - id: json
+    extensions: [".json", ".jsonc", ".json5", ".webmanifest", ".babelrc", ".prettierrc", ".eslintrc"]
+    comment: { line: "//", blockStart: "/*", blockEnd: "*/" }
+    strings: ["\""]
+    keywords: ["true", "false", "null"]
+    types: []
+    formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
+    completions:
+      - { label: obj, detail: object, insert: "{\n  $0\n}" }
+      - { label: arr, detail: array, insert: "[\n  $0\n]" }
+      - { label: kv, detail: key/value, insert: "\"$1\": $0" }
+
+  # ---------------------------------------------------------------- TOML
+  - id: toml
+    extensions: [".toml"]
+    comment: { line: "#" }
+    strings: ["\"", "'"]
+    keywords: ["true", "false"]
+    types: []
+    formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
+    completions:
+      - { label: table, detail: "[table]", insert: "[$1]\n$0" }
+      - { label: arraytable, detail: "[[table]]", insert: "[[$1]]\n$0" }
+      - { label: kv, detail: key/value, insert: "$1 = $0" }
+
+  # ---------------------------------------------------------------- CSS
+  - id: css
+    extensions: [".css", ".pcss", ".postcss"]
+    comment: { blockStart: "/*", blockEnd: "*/" }
+    strings: ["\"", "'"]
+    keywords: [
+      color, background, "background-color", "background-image", border, "border-radius",
+      margin, padding, width, height, "min-width", "max-width", "min-height", "max-height",
+      display, position, top, right, bottom, left, float, clear, overflow, "z-index",
+      font, "font-size", "font-family", "font-weight", "line-height", "text-align", "text-decoration",
+      flex, "flex-direction", "justify-content", "align-items", "align-self", gap, grid,
+      "grid-template-columns", "grid-template-rows", transition, transform, animation, opacity,
+      "box-shadow", cursor, content, visibility, "white-space", "box-sizing"
+    ]
+    types: [
+      px, em, rem, vh, vw, vmin, vmax, fr, deg, none, auto, inherit, initial, unset,
+      block, inline, "inline-block", flex, grid, absolute, relative, fixed, sticky, static,
+      center, left, right, bold, italic, solid, dashed, dotted, hidden, pointer, transparent
+    ]
+    formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
+    completions:
+      - { label: rule, detail: selector block, insert: "$1 {\n  $0\n}" }
+      - { label: flexcenter, detail: flex center, insert: "display: flex;\n  align-items: center;\n  justify-content: center;$0" }
+      - { label: media, detail: media query, insert: "@media (max-width: $1px) {\n  $0\n}" }
+
+  # ---------------------------------------------------------------- INI / .env / conf
+  - id: ini
+    extensions: [".ini", ".conf", ".cfg", ".env", ".properties", ".editorconfig", ".gitconfig"]
+    comment: { line: "#" }
+    strings: ["\"", "'"]
+    keywords: ["true", "false", "on", "off", "yes", "no"]
+    types: []
+    formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
+    completions:
+      - { label: section, detail: "[section]", insert: "[$1]\n$0" }
+      - { label: kv, detail: key=value, insert: "$1=$0" }
