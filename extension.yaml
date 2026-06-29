@@ -51,7 +51,7 @@ languages:
 
   # ---------------------------------------------------------------- XML
   - id: xml
-    extensions: [".xml", ".xsd", ".xsl", ".xslt", ".plist", ".rss", ".wsdl", ".csproj", ".props", ".targets", ".nuspec", ".resx"]
+    extensions: [".xml", ".xsd", ".plist", ".rss", ".wsdl", ".csproj", ".props", ".targets", ".nuspec", ".resx"]
     comment: { blockStart: "<!--", blockEnd: "-->" }
     strings: ["\"", "'"]
     keywords: [xml, version, encoding, standalone, DOCTYPE, CDATA, ENTITY, xmlns]
@@ -127,31 +127,6 @@ languages:
       - { label: table, detail: "[table]", insert: "[$1]\n$0" }
       - { label: arraytable, detail: "[[table]]", insert: "[[$1]]\n$0" }
       - { label: kv, detail: key/value, insert: "$1 = $0" }
-
-  # ---------------------------------------------------------------- CSS
-  - id: css
-    extensions: [".css", ".pcss", ".postcss"]
-    comment: { blockStart: "/*", blockEnd: "*/" }
-    strings: ["\"", "'"]
-    keywords: [
-      color, background, "background-color", "background-image", border, "border-radius",
-      margin, padding, width, height, "min-width", "max-width", "min-height", "max-height",
-      display, position, top, right, bottom, left, float, clear, overflow, "z-index",
-      font, "font-size", "font-family", "font-weight", "line-height", "text-align", "text-decoration",
-      flex, "flex-direction", "justify-content", "align-items", "align-self", gap, grid,
-      "grid-template-columns", "grid-template-rows", transition, transform, animation, opacity,
-      "box-shadow", cursor, content, visibility, "white-space", "box-sizing"
-    ]
-    types: [
-      px, em, rem, vh, vw, vmin, vmax, fr, deg, none, auto, inherit, initial, unset,
-      block, inline, "inline-block", flex, grid, absolute, relative, fixed, sticky, static,
-      center, left, right, bold, italic, solid, dashed, dotted, hidden, pointer, transparent
-    ]
-    formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
-    completions:
-      - { label: rule, detail: selector block, insert: "$1 {\n  $0\n}" }
-      - { label: flexcenter, detail: flex center, insert: "display: flex;\n  align-items: center;\n  justify-content: center;$0" }
-      - { label: media, detail: media query, insert: "@media (max-width: $1px) {\n  $0\n}" }
 
   # ---------------------------------------------------------------- INI / .env / conf
   - id: ini
