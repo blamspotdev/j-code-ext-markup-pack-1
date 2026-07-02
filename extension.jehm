@@ -2,7 +2,7 @@
 schema: 1
 uniqueName: jcode.lang.markup
 name: Markup Language Pack
-version: 1.0.0
+version: 1.0.1
 type: language
 publisher: jcode
 shortDescription: Coloring, completions, snippets, and formatting for HTML, XML, SVG, YAML, JSON, TOML, CSS, and INI.
@@ -19,7 +19,7 @@ suggests:
   lsps: []
   extensions: []
 images:
-  icon: media/icon.png
+  icon: media/icon.pngmedia/icon.png
   samples: []
   walkthrough: []
 entry:
