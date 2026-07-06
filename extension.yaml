@@ -139,3 +139,19 @@ languages:
     completions:
       - { label: section, detail: "[section]", insert: "[$1]\n$0" }
       - { label: kv, detail: key=value, insert: "$1=$0" }
+
+# --- header fields merged from extension.jehm ---
+publisher: jcode
+shortDescription: Coloring, completions, snippets, and formatting for HTML, XML, SVG, YAML, JSON, TOML, CSS, and INI.
+minJCodeVersion: 1.0.0
+targetJCodeVersion: 1.0.0
+category: Languages
+subcategory: Markup
+images:
+  icon: media/icon.png
+  samples: []
+  walkthrough: []
+entry:
+  manifest: extension.yaml
+  ui: null
+  libs: []
