@@ -2,6 +2,9 @@ id: jcode.lang.markup
 name: Markup Language Pack
 version: 1.0.1
 type: language
+requires:
+  lsps: [vscode-html-language-server, vscode-json-language-server, yaml-language-server]
+  sdks: [nodejs]
 
 # One extension, many languages. Each entry is a self-contained language pack
 # (coloring rules + completions + helpers + formatter) resolved by file extension.
