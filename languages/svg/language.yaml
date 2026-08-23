@@ -1,0 +1,21 @@
+# ---------------------------------------------------------------- SVG
+id: svg
+extensions: [".svg"]
+comment: { blockStart: "<!--", blockEnd: "-->" }
+strings: ["\"", "'"]
+keywords: [
+  svg, g, defs, symbol, use, path, rect, circle, ellipse, line, polyline, polygon,
+  text, tspan, image, clipPath, mask, pattern, marker, filter,
+  linearGradient, radialGradient, stop, animate, animateTransform
+]
+types: [
+  d, fill, stroke, x, y, x1, y1, x2, y2, cx, cy, r, rx, ry, width, height,
+  viewBox, transform, opacity, points, offset, gradientUnits, xmlns,
+  "stroke-width", "stroke-linecap", "stroke-linejoin", "fill-opacity", "stroke-opacity"
+]
+formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
+completions:
+  - { label: svg, detail: root, insert: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 $1\">\n  $0\n</svg>" }
+  - { label: path, detail: path, insert: "<path d=\"$1\" fill=\"$2\"/>$0" }
+  - { label: rect, detail: rectangle, insert: "<rect x=\"$1\" y=\"$2\" width=\"$3\" height=\"$4\"/>$0" }
+  - { label: circle, detail: circle, insert: "<circle cx=\"$1\" cy=\"$2\" r=\"$3\"/>$0" }

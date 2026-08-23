@@ -1,0 +1,15 @@
+# ---------------------------------------------------------------- XML
+id: xml
+extensions: [".xml", ".xsd", ".plist", ".rss", ".wsdl", ".csproj", ".props", ".targets", ".nuspec", ".resx"]
+comment: { blockStart: "<!--", blockEnd: "-->" }
+strings: ["\"", "'"]
+keywords: [xml, version, encoding, standalone, DOCTYPE, CDATA, ENTITY, xmlns]
+types: [id, name, type, value, ref, key, version, lang, xmlns, schemaLocation]
+formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
+completions:
+  - { label: tag, detail: element, insert: "<$1>$0</$1>" }
+  - { label: attr, detail: attribute, insert: "$1=\"$2\"$0" }
+  - { label: cdata, detail: CDATA block, insert: "<![CDATA[$0]]>" }
+helpers:
+  - title: XML declaration
+    snippet: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n$0"

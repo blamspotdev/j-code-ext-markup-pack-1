@@ -1,0 +1,42 @@
+# ---------------------------------------------------------------- HTML
+id: html
+extensions: [".html", ".htm", ".xhtml", ".vue", ".svelte"]
+comment: { blockStart: "<!--", blockEnd: "-->" }
+strings: ["\"", "'"]
+keywords: [
+  html, head, body, title, meta, link, style, script, base, noscript,
+  div, span, p, a, img, ul, ol, li, dl, dt, dd, br, hr, pre, code, blockquote,
+  h1, h2, h3, h4, h5, h6, strong, em, b, i, u, small, mark, sub, sup,
+  header, footer, nav, main, section, article, aside, figure, figcaption,
+  table, thead, tbody, tfoot, tr, td, th, caption, colgroup, col,
+  form, input, button, label, select, option, optgroup, textarea, fieldset, legend,
+  video, audio, source, track, canvas, svg, iframe, embed, object, picture,
+  template, slot, details, summary, dialog, datalist, output, progress, meter
+]
+types: [
+  class, id, href, src, alt, rel, type, name, value, placeholder, title,
+  content, charset, width, height, style, target, lang, role, disabled, checked,
+  selected, required, readonly, hidden, srcset, sizes, loading, defer, async
+]
+formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
+completions:
+  - { label: a, detail: anchor, insert: "<a href=\"$1\">$0</a>" }
+  - { label: img, detail: image, insert: "<img src=\"$1\" alt=\"$2\">$0" }
+  - { label: div, detail: block, insert: "<div class=\"$1\">\n  $0\n</div>" }
+  - { label: link, detail: stylesheet, insert: "<link rel=\"stylesheet\" href=\"$1\">$0" }
+  - { label: script, detail: script src, insert: "<script src=\"$1\"></script>$0" }
+  - { label: input, detail: input field, insert: "<input type=\"$1\" name=\"$2\">$0" }
+helpers:
+  - title: HTML5 boilerplate
+    snippet: |
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>$1</title>
+      </head>
+      <body>
+        $0
+      </body>
+      </html>

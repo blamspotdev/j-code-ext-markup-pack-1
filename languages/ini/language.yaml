@@ -1,0 +1,11 @@
+# ---------------------------------------------------------------- INI / .env / conf
+id: ini
+extensions: [".ini", ".conf", ".cfg", ".env", ".properties", ".editorconfig", ".gitconfig"]
+comment: { line: "#" }
+strings: ["\"", "'"]
+keywords: ["true", "false", "on", "off", "yes", "no"]
+types: []
+formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
+completions:
+  - { label: section, detail: "[section]", insert: "[$1]\n$0" }
+  - { label: kv, detail: key=value, insert: "$1=$0" }
