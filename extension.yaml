@@ -1,6 +1,6 @@
 id: jcode.lang.markup
 name: Markup Dev Pack
-version: 1.0.4
+version: 1.0.5
 type: language
 requires:
   lsps: [vscode-html-language-server, vscode-json-language-server, yaml-language-server]
