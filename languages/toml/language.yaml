@@ -1,0 +1,12 @@
+# ---------------------------------------------------------------- TOML
+id: toml
+extensions: [".toml"]
+comment: { line: "#" }
+strings: ["\"", "'"]
+keywords: ["true", "false"]
+types: []
+formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
+completions:
+  - { label: table, detail: "[table]", insert: "[$1]\n$0" }
+  - { label: arraytable, detail: "[[table]]", insert: "[[$1]]\n$0" }
+  - { label: kv, detail: key/value, insert: "$1 = $0" }

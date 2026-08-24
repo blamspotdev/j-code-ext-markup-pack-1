@@ -1,0 +1,14 @@
+# ---------------------------------------------------------------- YAML
+id: yaml
+extensions: [".yaml", ".yml"]
+comment: { line: "#" }
+strings: ["\"", "'"]
+keywords: ["true", "false", "null", "yes", "no", "on", "off", "~"]
+types: []
+formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
+completions:
+  - { label: key, detail: mapping, insert: "$1: $0" }
+  - { label: item, detail: list item, insert: "- $0" }
+helpers:
+  - title: Document separator
+    snippet: "---\n$0"

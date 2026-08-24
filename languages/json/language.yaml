@@ -1,0 +1,12 @@
+# ---------------------------------------------------------------- JSON
+id: json
+extensions: [".json", ".jsonc", ".json5", ".webmanifest", ".babelrc", ".prettierrc", ".eslintrc"]
+comment: { line: "//", blockStart: "/*", blockEnd: "*/" }
+strings: ["\""]
+keywords: ["true", "false", "null"]
+types: []
+formatter: { indent: 2, trimTrailingWhitespace: true, insertFinalNewline: true }
+completions:
+  - { label: obj, detail: object, insert: "{\n  $0\n}" }
+  - { label: arr, detail: array, insert: "[\n  $0\n]" }
+  - { label: kv, detail: key/value, insert: "\"$1\": $0" }
